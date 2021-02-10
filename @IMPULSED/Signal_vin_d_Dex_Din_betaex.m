@@ -34,7 +34,7 @@ function out = Signal_vin_d_Dex_Din_betaex(parms, model)
     end
     
     %% calculation
-    out = parms(1,:).*mig.Physics.RestrictedDWISignal([parms(2,:); parms(4,:)], model) ...
+    out = parms(1,:).*mati.Physics.RestrictedDWISignal([parms(2,:); parms(4,:)], model) ...
         + (1-parms(1,:)).*exp(-model.pulse.b.*(parms(3,:) + model.pulse.f.*parms(5,:)));
     
 end

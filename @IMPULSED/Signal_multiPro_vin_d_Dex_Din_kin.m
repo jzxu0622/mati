@@ -49,7 +49,7 @@ timeStep=model.pulseArray.delta_t;
 out = zeros(length(vin(:)),model.pulse.Nacq);
 for i_n=1:length(vin(:))
     beta=[vin(i_n) d(i_n) Dex(i_n) Din(i_n) kin(i_n) kex(i_n)];
-    R=mig.Physics.calMatrixR(timeStep,matrixSize,model.structure,beta);
+    R=mati.Physics.calMatrixR(timeStep,matrixSize,model.structure,beta);
     for i_b=1:model.pulse.Nacq
         [i_n i_b]
         n_pulse=model.pulseArray.n(i_b)-1;
@@ -59,17 +59,17 @@ for i_n=1:length(vin(:))
         end
         Dex_t=model.pulse.b(i_b)*Dex(i_n)/(model.pulse.delta(i_b)+model.pulse.Delta(i_b));  % if we include a diffusion tim -dependency for Dex, we need to modify the expression for Dex here.
         s_ex=1-vin(i_n);
-        A_0=mig.Physics.calMatrixA(model.pulse.gamma/2/pi*model.pulse.G(i_b)*timeStep/max(model.pulseArray.delta_q(i_b,:)),matrixSize,model.structure,beta); % A with the smallest q
-        A_max=mig.Physics.calMatrixA(model.pulse.gamma/2/pi*model.pulse.G(i_b)*timeStep,matrixSize,model.structure,beta);
+        A_0=mati.Physics.calMatrixA(model.pulse.gamma/2/pi*model.pulse.G(i_b)*timeStep/max(model.pulseArray.delta_q(i_b,:)),matrixSize,model.structure,beta); % A with the smallest q
+        A_max=mati.Physics.calMatrixA(model.pulse.gamma/2/pi*model.pulse.G(i_b)*timeStep,matrixSize,model.structure,beta);
         
         for i=1:n_pulse
             if i==1
-                S=mig.Physics.calMatrixS(model.pulseArray.q(i_b,i)*model.pulse.gamma/2/pi, matrixSize,model.structure,beta);       
+                S=mati.Physics.calMatrixS(model.pulseArray.q(i_b,i)*model.pulse.gamma/2/pi, matrixSize,model.structure,beta);       
                 s_s=vin(i_n)*S;
                 continue;
             end
             if i==n_pulse
-                S=mig.Physics.calMatrixS(abs(model.pulseArray.q(i_b,i))*model.pulse.gamma/2/pi, matrixSize,model.structure,beta);
+                S=mati.Physics.calMatrixS(abs(model.pulseArray.q(i_b,i))*model.pulse.gamma/2/pi, matrixSize,model.structure,beta);
                 S_nag=ctranspose(S);
                 s_s=s_s*R*S_nag;
                 continue;
@@ -100,7 +100,7 @@ for i_n=1:length(vin(:))
                 s_s=s_s*R;
             end
             Dinstant=-log(abs(sum(s_s(:)))/s_in)/timeStep;
-            [s_in_t,s_ex]=mig.Physics.generalSolution_blochEQ( Dinstant+kin(i_n),Dex_t+kex(i_n),kin(i_n),kex(i_n),s_in,s_ex,timeStep); 
+            [s_in_t,s_ex]=mati.Physics.generalSolution_blochEQ( Dinstant+kin(i_n),Dex_t+kex(i_n),kin(i_n),kex(i_n),s_in,s_ex,timeStep); 
             s_s=s_s/abs(sum(s_s(:)))*s_in_t;
         end       
         out(i_n,i_b)=abs(sum(s_s(:)))+s_ex;

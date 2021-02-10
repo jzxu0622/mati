@@ -66,7 +66,7 @@ function [ fitopts ] = CreateDictionary(this)
     
     % cell-volumn-weighted Dictionary
     for n = 1:fitopts.Nin
-        fitopts.Dictionary(:,n) = mig.Physics.RestrictedDWISignal([X_d(n), Y_Din(n)]', this) ;  
+        fitopts.Dictionary(:,n) = mati.Physics.RestrictedDWISignal([X_d(n), Y_Din(n)]', this) ;  
     end
     for n = 1:fitopts.Nex
         fitopts.Dictionary(:,fitopts.Nin+n) = exp(-pulse.b .* (X_Dex(n)+Y_betaex(n).*pulse.f)) ; % Dex = Dex0 + beta*f 
@@ -74,7 +74,7 @@ function [ fitopts ] = CreateDictionary(this)
     
     % non-cell-volumn-weighted Dictionary2
     for n = 1:fitopts.Nin
-        fitopts.Dictionary2(:,n) = X_d(n)^structure.Ndim*mig.Physics.RestrictedDWISignal([X_d(n), Y_Din(n)]', this) ;  
+        fitopts.Dictionary2(:,n) = X_d(n)^structure.Ndim*mati.Physics.RestrictedDWISignal([X_d(n), Y_Din(n)]', this) ;  
     end
     fitopts.Dictionary2 = fitopts.Dictionary2 ./ (sum(fitopts.ds(:).^structure.Ndim)) ; 
     

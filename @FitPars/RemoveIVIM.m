@@ -1,17 +1,17 @@
 function out = RemoveIVIM(this, data)
-%% mig.IMPULSED.RemoveIVIM to remove IVIM effects in diffusion weighted data
+%% mati.IMPULSED.RemoveIVIM to remove IVIM effects in diffusion weighted data
 % INPUTS:
-%       this: a mig.FitPars object
-%       data: a mig.ImageData object
+%       this: a mati.FitPars object
+%       data: a mati.ImageData object
 % OUTPUTS:
-%       out: a mig.ImageData object
+%       out: a mati.ImageData object
 % -------------------------------------------------------------------------------------------------------------------------
 
     %% preliminary
     warning('off') ; 
     
     % check input 
-    if ~isa(data,'mig.ImageData'), error('%s: the input data should be an ImageData object',mfilename) ; end
+    if ~isa(data,'mati.ImageData'), error('%s: the input data should be an ImageData object',mfilename) ; end
     
     % preparation 
     img = zeros([data.Nx, data.Ny, data.Nz, data.Nt]) ; 

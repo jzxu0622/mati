@@ -8,7 +8,7 @@ function FcnPlotDiagram(sim, vdist, fitopts)
     matrix_invw = vdist{11} ; matrix_ex = vdist{12} ; matrix_in = vdist{13} ; 
     
     %%
-    figure ; clf ; mig.Tools.SetPlotPars() ; 
+    figure ; clf ; mati.Tools.SetPlotPars() ; 
     set(gcf,'Units','inches', 'PaperUnits', 'inches', 'position',[6 6 6.9 2.4]) ; 
     fs.axis=6 ; fs.label=8 ; fs.legend=9 ; set(gcf,'DefaultAxesFontSize',fs.axis, 'DefaultAxesFontName', 'Times New Roman' )
     Nrow = 2 ; Ncol = 6 ; 

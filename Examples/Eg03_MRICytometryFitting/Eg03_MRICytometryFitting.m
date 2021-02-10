@@ -6,7 +6,7 @@
 clear variables ; clear obj ; 
 
 %% generate DiffusionPulseSequence object
-pulse_tcos = mig.DiffusionPulseSequence(9,...
+pulse_tcos = mati.DiffusionPulseSequence(9,...
     'TE',               110,...
     'delta',            40,...
     'Delta',            45,...
@@ -16,7 +16,7 @@ pulse_tcos = mig.DiffusionPulseSequence(9,...
     'gdir',             [0 0 1],...
     'trise',            0.9) ; 
 
-pulse_tpgse = mig.DiffusionPulseSequence(9,...
+pulse_tpgse = mati.DiffusionPulseSequence(9,...
     'TE',               110,...
     'delta',            12, ...
     'Delta',            74, ...
@@ -25,7 +25,7 @@ pulse_tpgse = mig.DiffusionPulseSequence(9,...
     'gdir',             [0 0 1],...
     'trise',             0.9) ; 
 
-pulse = mig.PulseSequence.cat(pulse_tcos, pulse_tpgse) ; 
+pulse = mati.PulseSequence.cat(pulse_tcos, pulse_tpgse) ; 
 
 % fitting range
 pulse = pulse(pulse.G<80e-5) ; % 80mT/m 
@@ -46,7 +46,7 @@ switch nmodel
 end
 
 fitopts.fittingMethod = 'special' ; 
-mricytometry = mig.MRICytometry(pulse, structure, fitopts) ; 
+mricytometry = mati.MRICytometry(pulse, structure, fitopts) ; 
 
 
 %% load data here. [Optional] Test MRICytometry model using simulated data
@@ -79,9 +79,9 @@ signal_sim = FcnSimulateSignal(sim, mricytometry) ;
 
 %%  create ImageData object
 noiseSigma = 1e-5 ; 
-signal_sim = mig.Physics.AddRicianNoise(signal_sim, noiseSigma) ; 
+signal_sim = mati.Physics.AddRicianNoise(signal_sim, noiseSigma) ; 
 [Npulse, Nparms] = size(signal_sim) ; 
-data = mig.ImageData(reshape(signal_sim',[Nparms, 1 1 Npulse])) ; 
+data = mati.ImageData(reshape(signal_sim',[Nparms, 1 1 Npulse])) ; 
 
 
 %% Fit signal
@@ -89,7 +89,7 @@ data = mig.ImageData(reshape(signal_sim',[Nparms, 1 1 Npulse])) ;
 fitopts.noiseModel = 'none' ; %{'none','simple';'rician'}
 fitopts.flag.multistart = 'y' ; fitopts.flag.parfor = 'n' ; fitopts.flag.deivim = 'n' ; 
 
-fitpars = mig.FitPars(mricytometry, fitopts) ; 
+fitpars = mati.FitPars(mricytometry, fitopts) ; 
 warning off ; 
 % fit model to data
 fitout = fitpars.Fit(data) ; 

@@ -40,7 +40,7 @@ function output = Signal_vin_d_Dex(parms, model)
     Din = repmat(model.structure.Din, [1, size(parms,2)]) ;
     
     %% calculation
-    output = parms(1,:).*mig.Physics.RestrictedDWISignal([parms(2,:); Din], model) ...
+    output = parms(1,:).*mati.Physics.RestrictedDWISignal([parms(2,:); Din], model) ...
         + (1-parms(1,:)).*exp(-model.pulse.b.*(parms(3,:) + model.structure.betaex'*model.pulse.f)) ; 
    
 end

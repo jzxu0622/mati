@@ -1,4 +1,4 @@
-classdef MRICytometry < mig.SignalModel
+classdef MRICytometry < mati.SignalModel
 %% class definition of MRI-cytometry
 % MRI-cytometry can take different structure models
 % -------------------------------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ classdef MRICytometry < mig.SignalModel
             if ~isempty(inputStructure)
                 names = fieldnames(inputStructure) ; 
                 for n=1:length(names)
-                    if ~isfield(this.structure, names{n}) , error('%s: The input structure has a field that is not a field of mig.MRICytometry.structure',mfilename) ; end
+                    if ~isfield(this.structure, names{n}) , error('%s: The input structure has a field that is not a field of mati.MRICytometry.structure',mfilename) ; end
                     this.structure.(names{n}) = inputStructure.(names{n}) ; 
                 end
             end
@@ -68,13 +68,13 @@ classdef MRICytometry < mig.SignalModel
             if ~isempty(inputDefaultFitopts)
                 names = fieldnames(inputDefaultFitopts) ; 
                 for n=1:length(names)
-                    if ~isfield(this.defaultFitopts, names{n}) , error('%s: The input defaultFitopts has a field that is not a field of mig.MRICytometry.defaultFitopts',mfilename) ; end
+                    if ~isfield(this.defaultFitopts, names{n}) , error('%s: The input defaultFitopts has a field that is not a field of mati.MRICytometry.defaultFitopts',mfilename) ; end
                     this.defaultFitopts.(names{n}) = inputDefaultFitopts.(names{n}) ; 
                 end
             end
             
             % -------------------- create dictionary ---------------------------
-            this.defaultFitopts = mig.MRICytometry.CreateDictionary(this) ; 
+            this.defaultFitopts = mati.MRICytometry.CreateDictionary(this) ; 
             
             % ------------------- other defaltFitopts -----------------------
             this.defaultFitopts.ADCfit_bmin = 0.19 ;                % minimum b for ADC fitting

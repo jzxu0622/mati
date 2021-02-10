@@ -6,7 +6,7 @@
 clear variables ; clear obj ; 
 
 %% generate DiffusionPulseSequence object
-pulse_tcos = mig.DiffusionPulseSequence(9,...
+pulse_tcos = mati.DiffusionPulseSequence(9,...
     'TE',               110,...
     'delta',            40,...
     'Delta',            45,...
@@ -16,7 +16,7 @@ pulse_tcos = mig.DiffusionPulseSequence(9,...
     'gdir',             [0 0 1],...
     'trise',            0.9) ; 
 
-pulse_tpgse = mig.DiffusionPulseSequence(9,...
+pulse_tpgse = mati.DiffusionPulseSequence(9,...
     'TE',               110,...
     'delta',            12, ...
     'Delta',            74, ...
@@ -25,7 +25,7 @@ pulse_tpgse = mig.DiffusionPulseSequence(9,...
     'gdir',             [0 0 1],...
     'trise',             0.9) ; 
 
-pulse = mig.PulseSequence.cat(pulse_tcos, pulse_tpgse) ; 
+pulse = mati.PulseSequence.cat(pulse_tcos, pulse_tpgse) ; 
 
 % fitting range
 pulse = pulse(pulse.G<80e-5) ; % 80mT/m 
@@ -41,7 +41,7 @@ switch nmodel
     case 3, structure.modelName = 'impulsed_vin_d_Dex_Din' ; %structure.betaex = 0 ; structure.geometry = 'sphere';
     case 4, structure.modelName = 'impulsed_vin_d_Dex_Din_betaex' ; %structure.geometry = 'sphere';
 end
-impulsed = mig.IMPULSED(structure, pulse) ; 
+impulsed = mati.IMPULSED(structure, pulse) ; 
 
 
 %% [Optional] Test IMPULSED model
@@ -63,9 +63,9 @@ switch nmodel
 end
 
 signal_sim = impulsed.FcnSignal(parms_sim, impulsed) ; 
-signal_sim = mig.Physics.AddRicianNoise(signal_sim,0.025) ; 
+signal_sim = mati.Physics.AddRicianNoise(signal_sim,0.025) ; 
 [Npulse, Nparms] = size(signal_sim) ; 
-data = mig.ImageData(reshape(signal_sim',[Nparms, 1 1 Npulse]),0.025) ; 
+data = mati.ImageData(reshape(signal_sim',[Nparms, 1 1 Npulse]),0.025) ; 
 
 
 %% Fit signal
@@ -76,7 +76,7 @@ fitopts.noiseModel = 'none' ; %{'none','simple';'rician'}
 fitopts.flag.multistart = 'y' ; fitopts.flag.parfor = 'y' ; fitopts.flag.deivim = 'n' ; 
 fitopts.NumStarts = 5 ; 
 
-fitpars = mig.FitPars(impulsed, fitopts) ; 
+fitpars = mati.FitPars(impulsed, fitopts) ; 
 warning off ; 
 % fit model to data
 fitout = fitpars.Fit(data) ; 

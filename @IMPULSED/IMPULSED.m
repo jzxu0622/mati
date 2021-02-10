@@ -1,4 +1,4 @@
-classdef IMPULSED < mig.SignalModel
+classdef IMPULSED < mati.SignalModel
 %% class definition of IMPULSED  
 % IMPULSED can take different structure models
 % Model choices: 
@@ -35,7 +35,7 @@ classdef IMPULSED < mig.SignalModel
         function this = IMPULSED(varargin)
             if nargin == 0 , return ; end      % return an empty object
             for n = 1:length(varargin)
-                if isa(varargin{n},'mig.DiffusionPulseSequence')
+                if isa(varargin{n},'mati.DiffusionPulseSequence')
                     this.pulse = varargin{n};
                 elseif isstruct(varargin{n})
                     inputStructure = varargin{n};
@@ -49,27 +49,27 @@ classdef IMPULSED < mig.SignalModel
             switch inputStructure.modelName
                 case  '1compt'                                                                                          % [din, Din], 1compartment
                     this.parmsLabels = ["d","Din"] ; this.NumParms = 2 ; 
-                    this.FcnSignal = @mig.IMPULSED.Signal_d_Din ;  
+                    this.FcnSignal = @mati.IMPULSED.Signal_d_Din ;  
                     this.defaultFitopts.x0 = [10, 1.5]' ; this.defaultFitopts.lb = [0 0]' ; this.defaultFitopts.ub = [30 4]' ; 
                     this.defaultStructure.modelName = '1compt' ; this.defaultStructure.geometry = 'sphere' ; 
                 case  '1comptHollow'                                                                                          % [din, Din], 1compartment
                     this.parmsLabels = ["din","dout","Din"] ; this.NumParms = 3 ; 
-                    this.FcnSignal = @mig.IMPULSED.Signal_d_Din_hollow ;  
+                    this.FcnSignal = @mati.IMPULSED.Signal_d_Din_hollow ;  
                     this.defaultFitopts.x0 = [1,10, 1.5]' ; this.defaultFitopts.lb = [0 0 0]' ; this.defaultFitopts.ub = [5 30 4]' ; 
                     this.defaultStructure.modelName = '1compt' ; this.defaultStructure.geometry = 'hollowSphere' ; 
                 case 'impulsed_vin_d_Dex'                                                                                      % [vin, d, Dex]
                     this.parmsLabels = ["vin", "d", "Dex"] ; this.NumParms = 3 ; 
-                    this.FcnSignal = @mig.IMPULSED.Signal_vin_d_Dex; 
+                    this.FcnSignal = @mati.IMPULSED.Signal_vin_d_Dex; 
                     this.defaultFitopts.x0 = [0.5, 10, 1.5]' ;  this.defaultFitopts.lb = [0, 0, 0]' ; this.defaultFitopts.ub = [1, 30 4]' ; 
                     this.defaultStructure.modelName = 'impulsed_vin_d_Dex'  ; this.defaultStructure.Din = 1.56 ; this.defaultStructure.betaex = 0 ; this.defaultStructure.geometry = 'sphere';
                 case 'impulsed_vin_d_Dex_Din'                                                                               % [vin, d, Dex, Din]
                     this.parmsLabels = ["vin", "d", "Dex", "Din"] ; this.NumParms = 4 ; 
-                    this.FcnSignal = @mig.IMPULSED.Signal_vin_d_Dex_Din; 
+                    this.FcnSignal = @mati.IMPULSED.Signal_vin_d_Dex_Din; 
                     this.defaultFitopts.x0 = [0.5, 10, 1.5, 1.5]' ; this.defaultFitopts.lb = [0, 0, 0, 0]' ; this.defaultFitopts.ub = [1, 30, 4,4]' ; 
                     this.defaultStructure.modelName = 'impulsed_vin_d_Dex_Din'  ; this.defaultStructure.betaex = 0 ; this.defaultStructure.geometry = 'sphere' ; 
                 case 'impulsed_vin_d_Dex_Din_betaex'                                                                  % [vin, d, Dex, Din, betaex]       
                     this.parmsLabels = ["vin", "d", "Dex", "Din", "betaex"] ; this.NumParms = 5 ; 
-                    this.FcnSignal = @mig.IMPULSED.Signal_vin_d_Dex_Din_betaex ;  
+                    this.FcnSignal = @mati.IMPULSED.Signal_vin_d_Dex_Din_betaex ;  
                     this.defaultFitopts.x0 = [0.5, 10, 1.5, 1.5, 3]' ; this.defaultFitopts.lb = [0, 0, 0, 0, 0]' ; this.defaultFitopts.ub = [1, 30, 4, 4, 10]' ; 
                     this.defaultStructure.modelName = 'impulsed_vin_d_Dex_Din_betaex'  ; this.defaultStructure.geometry = 'sphere';
                 otherwise

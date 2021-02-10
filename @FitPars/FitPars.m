@@ -25,12 +25,12 @@ classdef FitPars
                 case 0
                     return 
                 case 1
-                    if ~isa(varargin{1}, 'mig.SignalModel'), error('%s: FitPars should take a SignalModel object', mfilename) ; end
+                    if ~isa(varargin{1}, 'mati.SignalModel'), error('%s: FitPars should take a SignalModel object', mfilename) ; end
                     this.model = varargin{1} ; 
                     this.fitopts = this.model.defaultFitopts ; 
                 case 2
                     for n = 1:nargin        % fitopts structure and SignalModel object can be in any order
-                        if isa(varargin{n},'mig.SignalModel')
+                        if isa(varargin{n},'mati.SignalModel')
                             this.model = varargin{n} ; 
                         elseif isstruct(varargin{n})
                             inputFitopts = varargin{n} ;              % take input fitopts structure
@@ -52,7 +52,7 @@ classdef FitPars
                                 this.fitopts.flag.(inputFlagNames{m}) = inputFitopts.flag.(inputFlagNames{m}) ; 
                             end
                         else
-                            if ~ismember(inputNames{n}, default_names), warning on ; warning('%s: The input fitopts.%s is a new field that is not in mig.IMPULSED.defaultFitopts',mfilename, inputNames{n}); warning off ; end
+                            if ~ismember(inputNames{n}, default_names), warning on ; warning('%s: The input fitopts.%s is a new field that is not in mati.IMPULSED.defaultFitopts',mfilename, inputNames{n}); warning off ; end
                             this.fitopts.(inputNames{n}) = inputFitopts.(inputNames{n}) ; 
                         end
                     end

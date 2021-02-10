@@ -1,4 +1,4 @@
-classdef DiffusionPulseSequence < mig.PulseSequence
+classdef DiffusionPulseSequence < mati.PulseSequence
 %% class definition of DiffusionPulseSequence
 %
 % -------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ classdef DiffusionPulseSequence < mig.PulseSequence
                     end
             end
             % --------------- construct object ----------------------
-            superPropertyNames = properties(mig.PulseSequence) ; % find properties of super(parent)-class that need to call superclass constructor
+            superPropertyNames = properties(mati.PulseSequence) ; % find properties of super(parent)-class that need to call superclass constructor
             for n=1:length(names)
                 if ismember(names{n},superPropertyNames)
                     superStruct.(names{n}) = values{n} ;  
@@ -108,7 +108,7 @@ classdef DiffusionPulseSequence < mig.PulseSequence
                 end
             end
             % construct a superclass
-            this = this@mig.PulseSequence(superStruct) ; 
+            this = this@mati.PulseSequence(superStruct) ; 
             % continue to construct a subclass
             subPropertyNames = properties(this) ; 
             if isempty(subStruct)  % no input so return an empty object

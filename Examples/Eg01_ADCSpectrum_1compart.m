@@ -10,7 +10,7 @@ delta = 20 ; % [ms]
 fs = [25:25:1000]*1e-3 ; % [kHz]
 ns = floor(delta .* fs) ; 
 N = length(ns) ;  
-pulse = mig.DiffusionPulseSequence(sum(N) , ...
+pulse = mati.DiffusionPulseSequence(sum(N) , ...
                     'delta',           delta , ...         % gradient duration [ms]
                     'Delta' ,         delta+5 , ...     % gradient separation [ms]
                     'shape',         "cos" , ...        % gradient shape, a single string or a string array
@@ -22,7 +22,7 @@ pulse = mig.DiffusionPulseSequence(sum(N) , ...
 %%  ADC spectrum of planes
 % generate structure object
 structure.modelName = '1compt' ; structure.geometry = 'plane' ; 
-plane_model = mig.IMPULSED(structure, pulse) ; 
+plane_model = mati.IMPULSED(structure, pulse) ; 
 
 % plane distance array
 d = [2:2:10] ; Din = [1.56] ; 
@@ -38,7 +38,7 @@ legend('d =  2\mum','d =  4\mum','d =  6\mum','d =  8\mum','d = 10\mum','Locatio
 %%  ADC spectrum of cylinders
 % generate structure object
 structure.modelName = '1compt' ; structure.geometry = 'cylinder' ; 
-cylinder_model = mig.IMPULSED(structure, pulse) ; 
+cylinder_model = mati.IMPULSED(structure, pulse) ; 
 
 % plane distance array
 d = [5] ; Din = [1:0.2:2] ; [d,Din] = meshgrid(d,Din) ; sim_parms = [d(:)'; Din(:)'] ;     
@@ -53,7 +53,7 @@ legend('1\mum^2/ms','1.2\mum^2/ms','1.4\mum^2/ms','1.6\mum^2/ms','1.8\mum^2/ms',
 %%  ADC spectrum of sphere
 % generate structure object
 structure.modelName = '1compt' ; structure.geometry = 'sphere' ; 
-sphere_model = mig.IMPULSED(structure, pulse) ; 
+sphere_model = mati.IMPULSED(structure, pulse) ; 
 
 % plane distance array
 d = [5:5:25] ; Din = [1.56] ; [d,Din] = meshgrid(d,Din) ; sim_parms = [d(:)'; Din(:)'] ;     
@@ -68,7 +68,7 @@ legend('d =  5\mum','d = 10\mum','d = 15\mum','d = 20\mum','d = 25\mum','Locatio
 
 %% ADC spectrum of hollow sphere
 structure.modelName = '1comptHollow' ; structure.geometry = 'hollowSphere' ; 
-shell_model = mig.IMPULSED(structure, pulse) ; 
+shell_model = mati.IMPULSED(structure, pulse) ; 
 
 din = [1:3:15] ; dout = [16] ; Din = [1.56] ; [din, dout,Din] = meshgrid(din, dout,Din) ; sim_parms = [din(:)'; dout(:)'; Din(:)'] ;     
 signal_shell = shell_model.FcnSignal(sim_parms, shell_model) ; 

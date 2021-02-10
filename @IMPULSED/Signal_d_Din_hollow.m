@@ -33,6 +33,6 @@ function out = Signal_d_Din_hollow(parms, model)
     end
     
     %% calculation
-    out = mig.Physics.RestrictedDWISignal(parms, model) ;
+    out = mati.Physics.RestrictedDWISignal(parms, model) ;
     
 end

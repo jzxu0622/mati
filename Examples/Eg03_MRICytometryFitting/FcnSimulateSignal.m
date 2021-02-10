@@ -7,14 +7,14 @@ function [Signal, SignalIn, SignalEx] = FcnSimulateSignal(sim, this)
         SignalIn = 0 ; 
         for nd=1:length(sim.ds)
             for nDin = 1:length(sim.Dins)
-                SignalIn = SignalIn + sim.vd(nd)*sim.vDin(nDin)*(sim.ds(nd)^this.structure.Ndim)*mig.Physics.RestrictedDWISignal([sim.ds(nd), sim.Dins(nDin)]', this) ; 
+                SignalIn = SignalIn + sim.vd(nd)*sim.vDin(nDin)*(sim.ds(nd)^this.structure.Ndim)*mati.Physics.RestrictedDWISignal([sim.ds(nd), sim.Dins(nDin)]', this) ; 
                 S0In = S0In + sim.vd(nd)*sim.vDin(nDin)*(sim.ds(nd)^this.structure.Ndim) ; 
             end
         end
     else
         SignalIn = 0 ; 
         for nd=1:length(sim.ds)
-            SignalIn = SignalIn + sim.vd(nd)*(sim.ds(nd)^this.structure.Ndim)*mig.Physics.RestrictedDWISignal([sim.ds(nd), sim.Din]', this) ; 
+            SignalIn = SignalIn + sim.vd(nd)*(sim.ds(nd)^this.structure.Ndim)*mati.Physics.RestrictedDWISignal([sim.ds(nd), sim.Din]', this) ; 
             S0In = S0In + sim.vd(nd)*(sim.ds(nd)^this.structure.Ndim) ; 
         end
     end

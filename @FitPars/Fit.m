@@ -1,10 +1,10 @@
 function out = Fit(this, data)
-%% mig.FitPars.Fit to fit any model to data
+%% mati.FitPars.Fit to fit any model to data
 %
 % -------------------------------------------------------------------------------------------------------------------------
 % INPUTS:
-%       this: a mig.FitPars object
-%       data: a mig.ImageData object
+%       this: a mati.FitPars object
+%       data: a mati.ImageData object
 % OUTPUTS:
 %       out: a structure
 %           .mapLabels: the name labels of output parametric map
@@ -17,7 +17,7 @@ function out = Fit(this, data)
     %% preliminary
     warning('off') ; 
     % check input 
-    if ~isa(this,'mig.FitPars') || ~isa(data,'mig.ImageData'), error('%s: The inputs should be an FitPars object and an ImageData object',mfilename) ; end
+    if ~isa(this,'mati.FitPars') || ~isa(data,'mati.ImageData'), error('%s: The inputs should be an FitPars object and an ImageData object',mfilename) ; end
 
     %% preprocessing data
     if this.fitopts.flag.denoise == 'y', end
@@ -111,10 +111,10 @@ function  [x, resnorm] = run_optimization(this,signal, sigma, NumStarts)
                 case {'lsqcurvefit'}         % the simple least-square curve fitting. It actualy calls lsqnonlin() 
                     problem = createOptimProblem('lsqcurvefit','x0',this.fitopts.x0,'objective',this.model.FcnSignal,'lb',this.fitopts.lb,'ub',this.fitopts.ub,'xdata',this.model,'ydata',signal,'options',this.fitopts.options);
                 case {'lsqnonlin'}
-                    ObjectiveFcn = @(parms)mig.FitPars.ObjectiveFcn(parms, this, signal, sigma) ; 
+                    ObjectiveFcn = @(parms)mati.FitPars.ObjectiveFcn(parms, this, signal, sigma) ; 
                     problem = createOptimProblem(this.fitopts.solverName,'x0',this.fitopts.x0,'objective',ObjectiveFcn,'lb',this.fitopts.lb,'ub',this.fitopts.ub,'options',this.fitopts.options);
                 case {'fmincon'}
-                    ObjectiveFcn = @(parms)mig.FitPars.ObjectiveFcn(parms, this, signal, sigma) ; 
+                    ObjectiveFcn = @(parms)mati.FitPars.ObjectiveFcn(parms, this, signal, sigma) ; 
                     problem = createOptimProblem(this.fitopts.solverName,'x0',this.fitopts.x0,'objective',ObjectiveFcn,'lb',this.fitopts.lb,'ub',this.fitopts.ub,'Aeq',this.fitopts.Aeq,'beq',this.fitopts.beq,'Aineq',this.fitopts.Aineq,'beq',this.fitopts.beq,'nonlcon',this.fitopts.nonlcon,'options',this.fitopts.options);
             end
             ms = MultiStart('UseParallel',false,'Display','off') ; 

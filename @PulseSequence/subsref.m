@@ -30,11 +30,11 @@ switch s(1).type
             end
             % ----------------------- output a new object by calling a constractor ---------------------------
             % Note: for convenience, Please add all new subclass constractors here
-            if isa(this,'mig.DiffusionPulseSequence')
-                varargout{1} = mig.DiffusionPulseSequence(tmpStruct) ; 
-            elseif isa(this,'mig.SIRqMTPulseSequence') 
+            if isa(this,'mati.DiffusionPulseSequence')
+                varargout{1} = mati.DiffusionPulseSequence(tmpStruct) ; 
+            elseif isa(this,'mati.SIRqMTPulseSequence') 
             else        % basic PulseSequence
-                varargout{1} = mig.PulseSequence(tmpStruct) ; 
+                varargout{1} = mati.PulseSequence(tmpStruct) ; 
             end
         elseif length(s) == 2 && strcmp(s(2).type,'.')
             varargout{1} = this.(s(2).subs)(s(1).subs{1});

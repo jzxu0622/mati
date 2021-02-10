@@ -30,7 +30,7 @@ classdef PulseSequence
         function out = cat(varargin)
             % Override cat function by concacenating each field along column
             for narg = 1:nargin
-                if ~isa(varargin{narg},'mig.PulseSequence')
+                if ~isa(varargin{narg},'mati.PulseSequence')
                     error('Pulse concatenate takes PulseSequence objects as arguments') ; 
                 elseif narg == 1
                     mc = metaclass(varargin{1});
@@ -59,11 +59,11 @@ classdef PulseSequence
             end
             % ----------------------- output a new object by calling a constractor ---------------------------
             % Note: for convenience, Please add all new subclass constractors here
-            if isa(varargin{narg},'mig.DiffusionPulseSequence')
-                out = mig.DiffusionPulseSequence(tmp) ; 
-            elseif isa(varargin{narg},'mig.SIRqMTPulseSequence') 
+            if isa(varargin{narg},'mati.DiffusionPulseSequence')
+                out = mati.DiffusionPulseSequence(tmp) ; 
+            elseif isa(varargin{narg},'mati.SIRqMTPulseSequence') 
             else        % basic PulseSequence
-                out = mig.PulseSequence(tmp) ; 
+                out = mati.PulseSequence(tmp) ; 
             end
         end
     
@@ -73,7 +73,7 @@ classdef PulseSequence
             for n=1:length(fields)
                 out.(fields{n}) = this.(fields{n})' ;  
             end
-            mig.Tools.cprintf('_blue','Note: PulseSequence properties should be column vectors. They are shown as row vectors here for visualization purpose only\n') ; 
+            mati.Tools.cprintf('_blue','Note: PulseSequence properties should be column vectors. They are shown as row vectors here for visualization purpose only\n') ; 
         end
     
     end     % end of static methods

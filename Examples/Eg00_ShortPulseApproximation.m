@@ -10,7 +10,7 @@ clear ; clear obj ;
 Deltas = [4:20] ; 
 deltas = Deltas/2 ; % [ms]
 N = length(Deltas) ;  
-pulse = mig.DiffusionPulseSequence(sum(N) , ...
+pulse = mati.DiffusionPulseSequence(sum(N) , ...
                     'delta',           deltas , ...         % gradient duration [ms]
                     'Delta' ,         Deltas , ...     % gradient separation [ms]
                     'shape',         "pgse" , ...        % gradient shape, a single string or a string array
@@ -21,7 +21,7 @@ pulse = mig.DiffusionPulseSequence(sum(N) , ...
 %%  ADC of long pulses
 % generate structure object
 structure.modelName = '1compt' ; structure.geometry = 'plane' ; 
-sphere_model = mig.IMPULSED(structure, pulse) ; 
+sphere_model = mati.IMPULSED(structure, pulse) ; 
 
 % plane distance array
 d = [10:2:16] ; Din = [1.56] ; 
@@ -34,7 +34,7 @@ ADC_plane = -log(signal_signal) ./ pulse.b ;
 %% Generate pulse object
 deltas = 2 ; % [ms]
 N = length(Deltas) ;  
-pulse2 = mig.DiffusionPulseSequence(sum(N) , ...
+pulse2 = mati.DiffusionPulseSequence(sum(N) , ...
                     'delta',           deltas , ...         % gradient duration [ms]
                     'Delta' ,         Deltas , ...     % gradient separation [ms]
                     'shape',         "pgse" , ...        % gradient shape, a single string or a string array
@@ -45,7 +45,7 @@ pulse2 = mig.DiffusionPulseSequence(sum(N) , ...
 %%  ADC of long pulses
 % generate structure object
 structure.modelName = '1compt' ; structure.geometry = 'sphere' ; 
-sphere_model2 = mig.IMPULSED(structure, pulse2) ; 
+sphere_model2 = mati.IMPULSED(structure, pulse2) ; 
 
 % calculate restricted DWI signal
 signal_sphere2 = sphere_model2.FcnSignal({d, Din}, sphere_model2) ; 

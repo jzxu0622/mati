@@ -11,7 +11,7 @@ function out = Signal_d_Din(parms, model)
 % NOTES: 
 %       1. Rows are varying pulse parameters; columns are varying structual parms
 %       2. Make sure pulse (column vector) .* parms (row vector) to match dimensions, e.g., b(column) .* Dex (row)
-%       3. The structure geometry must be a member of {'plane','cylinder','sphere'}. The hollowSphere geometry is in another function mig.IMPULSED.Sigal_d_Din_hollow()
+%       3. The structure geometry must be a member of {'plane','cylinder','sphere'}. The hollowSphere geometry is in another function mati.IMPULSED.Sigal_d_Din_hollow()
 % -------------------------------------------------------------------------------------------------------------------------
 
 
@@ -35,6 +35,6 @@ function out = Signal_d_Din(parms, model)
     end
     
     %% calculate signals
-    out = mig.Physics.RestrictedDWISignal(parms, model) ;
+    out = mati.Physics.RestrictedDWISignal(parms, model) ;
     
 end
