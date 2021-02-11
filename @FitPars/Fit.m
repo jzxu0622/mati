@@ -63,8 +63,8 @@ function out = Fit(this, data)
         parFitPars.Value = this ; 
     end
     % ---------------------------------- fitting ------------------------------------ 
-    parfor (npixel = 1:Npixel, Ncore)
-%     for npixel=1:Npixel         % debugging purpose
+ %    parfor (npixel = 1:Npixel, Ncore)
+    for npixel=1:Npixel         % debugging purpose
         nx = row(npixel) ; ny = col(npixel) ; nz = slice(npixel) ; 
         signal = squeeze(parData.Value.img(nx,ny,nz,:)) ; 
         % noise sigma
@@ -76,7 +76,7 @@ function out = Fit(this, data)
         % fitting
         try
            [x, resnorm] = run_optimization(parFitPars.Value, signal, sigma, NumStarts) ; 
-        catch
+        catch error
             warning('Fitting in the pixel(%d,%d,%d) went wrong. Set all zeros for output parameters ...', nx, ny, nz)
             x = zeros([parFitPars.Value.model.NumParms,1]) ; resnorm = 0 ; 
             exitflag1d(npixel) = true ; 
