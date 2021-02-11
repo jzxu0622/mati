@@ -3,8 +3,8 @@
 This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. 
 Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan
 ---------------------------------------------------------------------------------------------------------------
-# Installation Notes
-1. Create a a local sandbox folder named "+mati". The "+" indicates a MATLAB namespace. 
+# Installation 
+1. Create a local sandbox folder named "+mati". The "+" indicates a MATLAB namespace. 
 2. Create a new MATLAB project using the github repository https://github.com/jzxu0622/mati.git with the local sandbox folder "+mati". 
 3. Add parent folder of +mati in MATLAB path. 
 4. Run examples in the +mati/examples to show how mati works
