@@ -129,11 +129,10 @@ fitout = fitpars.Fit(data) ;
 
 
 %% Check fitted results
+% Show the comparison of IMPULSED fitted and ground-truth mean cell size
 figure(1) ; clf ; hold on ; 
 plot(d_sim, fitout.d, 'o') ; 
 plot([0 20],[0 20],'r') ; box on ; 
 xlabel('input d [\mum]') ; ylabel('fitted d [\mum]') ; xlim([0 20]) ; ylim([0 20]) ; 
 legend('fits', 'identity', 'Location','Southeast') ; 
 
-
-%% End of Eg02_IMPULSEDFitting.m
