@@ -2,16 +2,16 @@
 % This example shows how to 
 %       (1) how to synthesize dMRI signals based on the IMPULSED method; and
 %       (2) how to fit the IMPULSED model to dMRI data to extract microstructural parameters such as
-%       mean cell size d, apparent intracellular volume fraction vin, intra- and extra-cellular
-%       diffusion coefficients Din and Dex. 
+%       mean cell size $d$, apparent intracellular volume fraction $v_{in}$, intra- and extra-cellular
+%       diffusion coefficients $D_{in}$ and $D_{ex}$. 
 
 
 %% Reference
 % The main reference that should be cited when using the code in this script is
 %%
 % 
-% # Jiang X, Li H, Xie J, Zhao P, Gore JC, Xu J. Quantification of cell size using temporal diffusion spectroscopy. Magn Reson Med. 2016;75(3):1076-85. PubMed PMID: 25845851; PMCID: PMC4592783.
-% # Xu J, Jiang X, Li H, Arlinghaus LR, McKinley ET, Devan SP, Hardy BM, Xie J, Kang H, Chakravarthy AB, Gore JC. Magnetic resonance imaging of mean cell size in human breast tumors. Magn Reson Med. 2020;83(6):2002-14. PubMed PMID: 31765494; PMCID: PMC7047520.
+% # Jiang X, et al. Quantification of cell size using temporal diffusion spectroscopy. Magn Reson Med. 2016;75(3):1076-85. PubMed PMID: 25845851.
+% # Xu J, et al. Magnetic resonance imaging of mean cell size in human breast tumors. Magn Reson Med. 2020;83(6):2002-14. PubMed PMID: 31765494.
 % 
 
 
