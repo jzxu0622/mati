@@ -4,15 +4,17 @@
 %       (2) how to fit the IMPULSED model to dMRI data to extract microstructural parameters such as
 %       mean cell size $d$, apparent intracellular volume fraction $v_{in}$, intra- and extra-cellular
 %       diffusion coefficients $D_{in}$ and $D_{ex}$. 
-
-
-%% Reference
+% 
+% *Reference* 
+% 
 % The main reference that should be cited when using the code in this script is
-%%
 % 
 % # Jiang X, et al. Quantification of cell size using temporal diffusion spectroscopy. Magn Reson Med. 2016;75(3):1076-85. PubMed PMID: 25845851.
 % # Xu J, et al. Magnetic resonance imaging of mean cell size in human breast tumors. Magn Reson Med. 2020;83(6):2002-14. PubMed PMID: 31765494.
 % 
+% *Comments or questions?* 
+% 
+% Please send your comments or questions to Junzhong (JZ) Xu (junzhong.xu@vanderbilt.edu)
 
 
 %% Preliminary
