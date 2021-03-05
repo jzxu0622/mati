@@ -52,7 +52,7 @@ classdef MRICytometry < mati.SignalModel
             this.defaultFitopts.fittingMethod = 'special' ;          % {'normal','special'}. MRICytometry needs special fitting
             this.defaultFitopts.FitFcn = @this.FitFcn ; 
             this.defaultFitopts.penalty = 1e-2 ; this.defaultFitopts.penalty2 = 1e-4 ; 
-            this.defaultFitopts.noiseModel = 'none' ;       % {'none','simple','rician','meanrician'}
+            this.defaultFitopts.noiseModel = 'none' ;       % {'none','standard','logLikelihood','meanrician'}
             this.defaultFitopts.options =optimset('Display','off') ; 
             
             % ------------------ update structure using inputs -----------------------
@@ -83,7 +83,7 @@ classdef MRICytometry < mati.SignalModel
             % flags for many options
             this.defaultFitopts.flag.denoise = 'n' ; 
             this.defaultFitopts.flag.degibbs = 'n' ; 
-            this.defaultFitopts.flag.deivim = 'y' ; 
+            this.defaultFitopts.flag.deivim = 'n' ; 
             this.defaultFitopts.flag.multistart = 'n' ; 
             this.defaultFitopts.flag.parfor = 'n' ; 
             

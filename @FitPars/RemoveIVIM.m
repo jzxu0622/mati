@@ -19,7 +19,7 @@ function out = RemoveIVIM(this, data)
     
     % options
     if this.fitopts.flag.parfor == 'y'
-        poolobj = parpool ;  Ncore = poolobj.NumWorkers ; 
+        poolobj = gcp('nocreate') ;  Ncore = poolobj.NumWorkers ; 
     else
         Ncore = 0 ; 
     end
@@ -30,7 +30,6 @@ function out = RemoveIVIM(this, data)
     [row, col, slice]=ind2sub(size(data.mask),find(data.mask>0)) ;     Npixel = length(row) ; 
     img1d = zeros([data.Nt, Npixel]) ;    
     
-%     for npixel = 1:Npixel
     parfor (npixel = 1:Npixel, Ncore)
         nx = row(npixel) ; ny = col(npixel) ; nz = slice(npixel) ; 
         signal_raw = squeeze(data.img(nx,ny,nz,:)) ; 
@@ -44,7 +43,7 @@ function out = RemoveIVIM(this, data)
             ind_fit = (pulse.tdiff==tdiffs(ntdiff)) & (pulse.b > this.model.defaultFitopts.ADCfit_bmin) & (pulse.b < this.model.defaultFitopts.ADCfit_bmax) ; 
             switch sum(ind_fit)
                 case {0,1}      % not enough points to perform ADC fitting so keep original signal
-%                     warning on ; warning('%s: Not sufficient points for ADC fitting to remove IVIM') ; warning off ; 
+                    warning on ; warning('%s: Not sufficient points for ADC fitting to remove IVIM') ; warning off ; 
                     ind_fit = ind_tdiff ; S0 = 1 ; 
                 case {2,3}      % exponential ADC fitting, Gaussian Phase Approximation
                     p = polyfit(pulse.b(ind_fit), -log(signal_raw(ind_fit)),1) ; 
