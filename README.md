@@ -19,9 +19,9 @@ The MATI package was written using Objective Oriented Programming and contains a
 There are subclasses are defined for specific applications. 
 1.	mati.DiffusionPulseSequence is a subclass of mati.PulseSequence specifically for diffusion pulse sequences. It includes more diffusion MRI parameters such as b value, δ (each diffusion gradient duration), Δ (separation of two diffusion gradients), and shape (the diffusion gradient waveform shape such as trapezoid or trapezoidal-cosine). 
 2.	There are four subclasses of mati.SignalModel, corresponding to three different models
-    (1).	mati.IMPULSED for estimation of mean cell size
-    (2).	mati.MRICytometry for estimation of cell size distribution
-    (3).	mati.JOINT for simultaneous estimation of mean cell size and transcytolemmal water exchange
+    1.	mati.IMPULSED for estimation of mean cell size
+    2.	mati.MRICytometry for estimation of cell size distribution
+    3.	mati.JOINT for simultaneous estimation of mean cell size and transcytolemmal water exchange
 
 Examples how to use the MATI package are provided in the Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
 
