@@ -1,6 +1,7 @@
 # MATI (Microstructural Analysis of Tissues by Imaging)
 ---------------------------------------------------------------------------------------------------------------
 This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. 
+
 Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan, Matthew T. McKenna
 ---------------------------------------------------------------------------------------------------------------
 # Installation 
@@ -26,7 +27,7 @@ There are subclasses are defined for specific applications.
 Examples how to use the MATI package are provided in the Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
 
 
-#Comments or questions? 
+# Comments or questions? 
 Please send your comments or questions to Junzhong (JZ) Xu (junzhong.xu@vanderbilt.edu) or Xiaoyu Jiang (xiaoyu.jiang@vumc.org) 
 
 
