@@ -26,6 +26,10 @@ There are subclasses are defined for specific applications.
 
 Examples how to use the MATI package are provided in the mati/Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
 
+# Reference 
+To quote the relevant references for the MATI code you can look in the individual example readme.txt files, and also please reference the review papers about OGSE and MR cell size imaging:
+1.	Gore JC, Xu J, Colvin DC, Yankeelov TE, Parsons EC, Does MD. Characterization of tissue structure at varying length scales using temporal diffusion spectroscopy. NMR Biomed, 2010; 23: 745-56.
+2.	Jiang X, Li H, Devan SP, Gore JC, Xu J. MR cell size imaging with temporal diffusion spectroscopy. Magn Reson Imaging, 2021; 77: 109-23.
 
 # Comments or questions? 
 Please send your comments or questions to Junzhong (JZ) Xu (junzhong.xu@vanderbilt.edu) or Xiaoyu Jiang (xiaoyu.jiang@vumc.org) 
