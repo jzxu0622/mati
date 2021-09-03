@@ -52,15 +52,16 @@ classdef DiffusionPulseSequence < mati.PulseSequence
         function out = get.T(this) ,             out = 1./this.f ;             out(this.n==0) = 0 ;         end
         % get tp
         function out = get.tp(this)
-            if ~ismember("pgse",this.shape) && ~ismember("tpgse",this.shape) && ~ismember("tcos",this.shape) % only pgse, tpgse, and tcos require tp
+            if ~ismember("pgse",this.shape) && ~ismember("tpgse",this.shape) && ~ismember("tcos",this.shape) && ~ismember("tsin",this.shape)% only pgse, tpgse, tcos, and tsin require tp
                 out.tp = [] ;             
             elseif isempty(this.trise)
-                error('%s: The shape has either pgse, tpgse, or tcos so trise must be set',mfilename) ; 
+                error('%s: The shape has either pgse, tpgse, tcos, or tsin so trise must be set',mfilename) ; 
             else
                 out = zeros([this.Nacq,1]) ; 
                 ind = (this.shape=="pgse") ;   if ~isempty(ind) ,  out(ind) = this.delta(ind) ; end
                 ind = (this.shape=="tpgse") ;   if ~isempty(ind) ,  out(ind) = this.delta(ind) - 2*this.trise(ind) ; end
                 ind = (this.shape=="tcos") ;   if ~isempty(ind) ,  out(ind) =  (this.delta(ind) - (6*this.n(ind)+1).*this.trise(ind))/4./this.n(ind); end
+                ind = (this.shape=="tsin") ;   if ~isempty(ind) ,  out(ind) =  (this.delta(ind) - 4*this.n(ind).*this.trise(ind))/2./this.n(ind); end
             end
             if any(out<0), error('%s: tp cannot be <0',mfilename) ; end
         end
@@ -70,6 +71,7 @@ classdef DiffusionPulseSequence < mati.PulseSequence
             ind = (this.shape=="sin") ;   if ~isempty(ind) ,  out(ind) = 3/4./(this.n(ind) ./ this.delta(ind)) ; end
             ind = (this.shape=="cos") ;   if ~isempty(ind) ,  out(ind) = 1/4./(this.n(ind) ./ this.delta(ind)) ; end
             ind = (this.shape=="tcos") ;   if ~isempty(ind) ,  out(ind) = 1/4./(this.n(ind) ./ this.delta(ind)) ; end
+            ind = (this.shape=="tsin") ;   if ~isempty(ind) ,  out(ind) = 3/4./(this.n(ind) ./ this.delta(ind)) ; end
         end
         
         % %%%%%%%%% Constructor %%%%%%%%%%%%%%%%%
@@ -139,7 +141,7 @@ classdef DiffusionPulseSequence < mati.PulseSequence
                 error('%s: n should be zero for PGSE', mfilename)
             end
             % check trise
-            if any(this.shape=='tpgse' | this.shape=='tcos') && isempty(this.trise), error('%s: The trise must be set for tpgse or tcos shapes',mfilename) ; end 
+            if any(this.shape=='tpgse' | this.shape=='tcos' | this.shape=='tsin' ) && isempty(this.trise), error('%s: The trise must be set for tpgse, tcos, or tsin shapes',mfilename) ; end 
             % check b and G
             if isempty(this.b) && isempty(this.G), error('%s: either b or G should be set',mfilename); end
             if ~isempty(this.b)
@@ -180,6 +182,14 @@ classdef DiffusionPulseSequence < mati.PulseSequence
                     this.b(ind) = (this.gamma*this.G(ind)).^2.*((91*this.n(ind).*this.trise(ind).^3)/15 + (8*this.n(ind).*this.tp(ind).^3)/3 + this.trise(ind).^3/30 + 12*this.n(ind).*this.trise(ind).*this.tp(ind).^2 + (46*this.n(ind).*this.trise(ind).^2.*this.tp(ind))/3) ;
                 end
             end
+            ind = (lower(this.shape)=='tsin') ;       % trapezoidal sin
+            if any(ind)
+                if flag.b_fixed == 'y'
+                    this.G(ind) = sqrt(this.b(ind)/2./this.n(ind)./((2*this.tp(ind).^3)/3 + 3*this.tp(ind).^2.*this.trise(ind) + (23*this.tp(ind).*this.trise(ind).^2)/6 + (23*this.trise(ind).^3)/15))/this.gamma ; 
+                else
+                    this.b(ind) = 2.*this.n(ind).*(this.gamma*this.G(ind)).^2.*((2*this.tp(ind).^3)/3 + 3*this.tp(ind).^2*this.trise(ind) + (23*this.tp(ind).*this.trise(ind).^2)/6 + (23*this.trise(ind).^3)/15) ; 
+                end
+            end
             ind = (lower(this.shape)=='pgse') ;      % rectangular PGSE
             if any(ind)
                 if flag.b_fixed == 'y'
@@ -204,8 +214,6 @@ classdef DiffusionPulseSequence < mati.PulseSequence
                     this.b(ind) = 3/4*(this.gamma*this.G(ind)/pi./ this.n(ind)).^2 .* this.delta(ind).^3 ;
                 end
             end
-            ind = (lower(this.shape)=='tsin') ;          % trapezoidal sin
-            if any(ind) , error('%s: The tsin shape is not supported yet',mfilename) ; end
 
         end % end of constructor
         
