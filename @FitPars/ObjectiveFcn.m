@@ -17,9 +17,9 @@ function out = ObjectiveFcn(parms, this, ydata, sigma)
     switch lower(this.fitopts.noiseModel)
         case {'none','default'} % no noise model
             out = ydata - E ; 
-        case {'simple'} % simple rician noise model
+        case {'standard'} % standard rician noise model
             out = ydata - sqrt(E.^2 + sigma.^2) ; 
-        case {'rician'} % Rician noise model
+        case {'loglikelihood'} % log likelihood Rician noise model
             out = - LogLikelihood(ydata, E, sigma) ; 
         case {'meanrician'} % adjust mean Rician noise
             out = ydata - sqrt(pi/2)*sigma.*Lhalf(-E.^2/2./sigma.^2) ;         
