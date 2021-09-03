@@ -11,3 +11,4 @@ Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan
 
 # Notes
 1. There are two microstructural imaging methods are included in the current version 1.0, i.e., IMPULSED and MRI-cytometry, which fit mean cell size and cell size distribution, respectively. 
+2. A JOINT model was added to account for the influences of transcytolemmal water exchange. 
