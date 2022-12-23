@@ -21,7 +21,8 @@ switch s(1).type
                 if strcmp(fields{n}, 'gamma') 
                     tmpStruct.gamma = this.(fields{n}) ; 
                 elseif strcmp(fields{n}, 'Nacq')
-                    tmpStruct.Nacq = sum(s.subs{:}) ; 
+                    tmpStruct.Nacq = sum(s.subs{:}>0) ;  % ">0" added by jzxu 20211008
+%                     tmpStruct.Nacq = numel(s.subs{:}) ; 
                 elseif isempty(this.(fields{n}))
                     tmpStruct.(fields{n}) = [] ; 
                 else

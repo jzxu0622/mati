@@ -30,6 +30,9 @@ function out = ObjectiveFcn(parms, this, ydata, sigma)
         out = sum(out.^2) ; 
     end
 
+    % make sure out is double format
+    out = double(out) ; 
+    
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

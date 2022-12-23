@@ -208,7 +208,6 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function lambdan = get_hollow_sphere_roots(a,b)
     %% get lambda for hollow sphere structure
-
     xstep = 0.00001 ;     xmax = 100 ; 
     x = xstep:xstep:xmax ; x = x' ; 
     numRoots = 20 ; 
