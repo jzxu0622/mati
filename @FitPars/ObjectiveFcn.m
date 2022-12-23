@@ -29,7 +29,10 @@ function out = ObjectiveFcn(parms, this, ydata, sigma)
     if strcmp(this.fitopts.solverName, 'fmincon')
         out = sum(out.^2) ; 
     end
-
+    
+    % make sure the out is the double format
+    out = double(out) ; 
+    
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
