@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------------------------------------------
 This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. 
 
-Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan, Matthew T. McKenna 
+Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan 
 ---------------------------------------------------------------------------------------------------------------
 # Installation 
 1. Create a local sandbox folder named "+mati". The "+" indicates a MATLAB namespace. 
@@ -24,7 +24,9 @@ There are subclasses are defined for specific applications.
     2.	mati.MRICytometry for estimation of cell size distribution using the MRI-cytometry method
     3.	mati.JOINT for simultaneous estimation of mean cell size and transcytolemmal water exchange using a joint method (IMPULSED + water exchange)
 
-Examples how to use the MATI package are provided in the mati/Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
+Examples about how to use the MATI package are provided in the mati/Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
+
+More examples have been added including Eg04 - Eg06. Each of these examples contains the shared code of a recently-published paper. Check them out! 
 
 # Reference 
 To quote the relevant references for the MATI code you can look in the individual example readme.txt files, and also please reference the review papers about OGSE and MR cell size imaging:
