@@ -29,8 +29,8 @@ MEC = 'MarkerEdgeColor' ; mec = [1 1 1]*0.4 ;
 
 %  USAGE: plot(x, y, char(fig_marker(n)), MFC,char(fig_color(n)))
 fig_marker_line = {'bo-','r>-','gd-','c^-','mp-','ks-'} ; 
-fig_marker = {'bo','r>','gd','c^','mp','ks'} ; 
-fig_color = {'b','r','g','c','m','k'} ; 
+fig_marker = {'bo','r>','kd','c^','mp','gs'} ; 
+fig_color = {'b','r','k','c','m','g'} ; 
 
 %% color
 % transpancy
