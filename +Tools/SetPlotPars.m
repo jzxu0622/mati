@@ -29,12 +29,16 @@ MEC = 'MarkerEdgeColor' ; mec = [1 1 1]*0.4 ;
 
 %  USAGE: plot(x, y, char(fig_marker(n)), MFC,char(fig_color(n)))
 fig_marker_line = {'bo-','r>-','gd-','c^-','mp-','ks-'} ; 
-fig_marker = {'bo','r>','kd','c^','mp','gs'} ; 
-fig_color = {'b','r','k','c','m','g'} ; 
+fig_marker = {'bo','r>','kd','g^','mp','cs'} ; 
+fig_color = {'b','r','k','g','m','c'} ; 
 
 %% color
 % transpancy
 % col = [0 1 0] ; color_saturation = 0.3 ; color_new = col + (1-col)*(1-color_saturation) ; 
+
+%% Greeks
+% Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ, Ο ο, Π π, Ρ ρ, Σ σ/ς, Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω
+
 
 %% --------- set Nrow X Ncol ------------    
 % figure(1) ;  clf ; set(gcf, 'Units', 'inches', 'Position', [9 6 6 5]) ; %colormap gray
