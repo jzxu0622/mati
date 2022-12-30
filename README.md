@@ -26,7 +26,7 @@ There are subclasses are defined for specific applications.
 
 Examples about how to use the MATI package are provided in the mati/Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
 
-More examples have been added including Eg04 - Eg06. Each of these examples contains the shared code of a recently-published paper. Check them out! 
+More examples have been added including Eg04 - Eg06. Each of these examples contains shared code from a recently-published paper. Check them out! 
 
 # Reference 
 To quote the relevant references for the MATI code you can look in the individual example readme.txt files, and also please reference the review papers about OGSE and MR cell size imaging:
