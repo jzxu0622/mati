@@ -8,7 +8,7 @@ Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan
 1. Create a local sandbox folder named "+mati". The "+" indicates a MATLAB namespace. 
 2. Create a new MATLAB project using the github repository https://github.com/jzxu0622/mati.git with the local sandbox folder "+mati". If an error occurs, try "git://github.com/jzxu0622/mati" instead. Or you can first use a local "mati" folder as the sandbox folder during cloning and then rename it to "+mati". 
 3. Make sure the parent folder of +mati is addded to the MATLAB path. 
-4. Run the examples in the +mati/Examples to show how mati works in different specific applications
+4. Run the examples in the +mati/Examples to show how mati works in different specific applications.
 
 # Contents
 The MATI package was written using Objective Oriented Programming and contains a few easy-to-use classes:
