@@ -1,11 +1,11 @@
 %% This script is for the convenience of plotting
 % 1. Defines some MATLAB visualization parameters for convenience
 % 2. Show examples how to plot a few different kinds of figures
-% -------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
 % NOTES: 
 %       1. Please use this script after a figure opened
 %       2. This is a script so all defined parameters will go into main script
-% -------------------------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------------------
 
 
 %% -------------------- figure size -------------------------
@@ -36,9 +36,11 @@ fig_color = {'b','r','k','g','m','c'} ;
 % transpancy
 % col = [0 1 0] ; color_saturation = 0.3 ; color_new = col + (1-col)*(1-color_saturation) ; 
 
-%% Greeks
+%% Symbols
+% Greeks
 % Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ, Ο ο, Π π, Ρ ρ, Σ σ/ς, Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω
-
+% symbols
+% degree: º   temperature: ºC   
 
 %% --------- set Nrow X Ncol ------------    
 % figure(1) ;  clf ; set(gcf, 'Units', 'inches', 'Position', [9 6 6 5]) ; %colormap gray
