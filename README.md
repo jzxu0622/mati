@@ -1,6 +1,8 @@
 # MATI (Microstructural Analysis of Tissues by Imaging)
 ---------------------------------------------------------------------------------------------------------------
-This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. The matiGUI_win11.exe is a standalone package with GUI for the Windwos 11 system. Standalone packages for other operating systems (Linux and MacOS) are under development. 
+This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. 
+1. The matiGUI_win11.exe is a standalone package with GUI for the Windwos 11 system. Standalone packages for other operating systems (Linux and MacOS) are under development.
+2. You can install matiGUi as an App in your MATLAB using the file matiGUI.mlappinstall. The version was tested with MATLAB2024b. 
 
 Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan 
 ---------------------------------------------------------------------------------------------------------------
