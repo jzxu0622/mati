@@ -1,1 +1,0 @@
-This example creates a 3D structure of randomly packed spheres with a distribution of sphere diameters. The intra-spherical volume fraction can exceed 70% or 80% by adjusting sphere swelling ratios. 
