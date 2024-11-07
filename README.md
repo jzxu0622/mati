@@ -1,39 +1,21 @@
 # MATI (Microstructural Analysis of Tissues by Imaging)
 ---------------------------------------------------------------------------------------------------------------
-This is a MATLAB package that includes microstructural analysis code developed by Vanderbilt University Institute of Imaging Science. The matiGUI_win11.exe is a standalone package with GUI for the Windwos 11 system. Standalone packages for other operating systems (Linux and MacOS) are under development. 
+MATI (Microstructural Analysis of Tissues by Imaging) v1.0 is a GPU-accelerated toolbox for microstructural diffusion MRI simulation and data fitting with a user-friendly graphical user interface. MATI runs a Finite Difference simulation to simulate diffusion MRI signals arising from arbitrary modeled microstructural tissues and diffusion pulse sequences. As a general framework for data fitting, MATI fits any user-customized signal model to experimental data to extract parameters with a selection of fitting methods. 
 
-Authors:  Junzhong Xu, Xiaoyu Jiang, Sean P. Devan 
+MATI was developed by Dr. Junzhong Xu at Vanderbilt University Medical Center. Please send your comments or questions to Junzhong (JZ) Xu (junzhong.xu@vanderbilt.edu)
 ---------------------------------------------------------------------------------------------------------------
-# Installation 
-1. Create a local sandbox folder named "+mati". The "+" indicates a MATLAB namespace. 
-2. Create a new MATLAB project using the github repository https://github.com/jzxu0622/mati.git with the local sandbox folder "+mati". If an error occurs, try "git://github.com/jzxu0622/mati" instead. Or you can first use a local "mati" folder as the sandbox folder during cloning and then rename it to "+mati". 
-3. Make sure the parent folder of +mati is addded to the MATLAB path. 
-4. Run the examples in the +mati/Examples to show how mati works in different specific applications..
 
-# Contents
-The MATI package was written using Objective Oriented Programming and contains a few easy-to-use classes:
-1.	mati.PulseSequence is the parent class for all pulse sequence classes. It contains basic pulse sequence parameters such as Nacq (number of data points acquired), TR (repetition time) and TE (echo time). 
-2.	mati.SignalModel is the parent class for all model classes. It contains basic signal model parameters such as parmsLabels (name tags of fitting parameters), FcnSignal (function to calculate signals), and defaultFitopts (the default options and parameters for data fitting). 
-3.	mati.ImageData is the class for image data. It contains basic properties of the image data such as img (data matrix), sigma (optional noise standard deviation), mask (mask for data fitting). 
-4.	mati.FitPars is the class for general data fitting. It contains model (signal model) and fitopts (fitting options and parameters). mati.FitPars.Fit() is the main function to fit data. 
+# Files
+MATI is distributed as a MATLAB App. It contains the following files:
+1. MATI.mlappinstall is the installation file. 
+2. MATI_Guide.pdf is a quick guide about how to use MATI for simulation and data fitting with GUI screenshots. 
+3. Examples.zip can be extracted to an Example folder that contains example code and data showing how to use MATI scripts. 
+4. LICENSE.md is the license file. 
 
-There are subclasses are defined for specific applications. 
-1.	mati.DiffusionPulseSequence is a subclass of mati.PulseSequence specifically for diffusion pulse sequences. It includes more diffusion MRI parameters such as b value, δ (each diffusion gradient duration), Δ (separation of two diffusion gradients), and shape (the diffusion gradient waveform shape such as trapezoid or trapezoidal-cosine). 
-2.	There are three subclasses of mati.SignalModel, corresponding to three different methods that either published or under review: 
-    1.	mati.IMPULSED for estimation of mean cell size using the IMPULSED method
-    2.	mati.MRICytometry for estimation of cell size distribution using the MRI-cytometry method
-    3.	mati.JOINT for simultaneous estimation of mean cell size and transcytolemmal water exchange using a joint method (IMPULSED + water exchange)
+# References
+If you use MATI, either in a whole or partially, please cite 
+1. this source code: https://github.com/jzxu0622/mati
+2. arXiv link to the MATI paper. 
 
-Examples about how to use the MATI package are provided in the mati/Examples folder. All necessary functions, data, and help files are included with the main script for each example. Users are encouraged to run examples first to get familiar with the MATI package. 
-
-More examples have been added including Eg04 - Eg06. Each of these examples contains the shared code of a recently-published paper. Check them out! 
-
-# Reference 
-To quote the relevant references for the MATI code you can look in the individual example readme.txt files, and also please reference the review papers about OGSE and MR cell size imaging:
-1.	Gore JC, Xu J, Colvin DC, Yankeelov TE, Parsons EC, Does MD. Characterization of tissue structure at varying length scales using temporal diffusion spectroscopy. NMR Biomed, 2010; 23: 745-56.
-2.	Jiang X, Li H, Devan SP, Gore JC, Xu J. MR cell size imaging with temporal diffusion spectroscopy. Magn Reson Imaging, 2021; 77: 109-23.
-
-# Comments or questions? 
-Please send your comments or questions to Junzhong (JZ) Xu (junzhong.xu@vanderbilt.edu) or Xiaoyu Jiang (xiaoyu.jiang@vumc.org) 
 
 
