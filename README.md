@@ -9,7 +9,7 @@ MATI was developed by Dr. Junzhong Xu at Vanderbilt University Medical Center. P
 MATI is distributed as a MATLAB App. It contains the following files:
 1. MATI.mlappinstall is the installation file. 
 2. MATI_Guide.pdf is a quick guide about how to use MATI for simulation and data fitting with GUI screenshots. 
-3. Examples.zip can be extracted to an Example folder that contains example code and data showing how to use MATI scripts. 
+3. Examples.zip can be extracted to an Example folder that contains example code and data showing how to use MATI scripts. It can be downloaded from the release v1.0. 
 4. LICENSE.md is the license file. 
 
 # References
