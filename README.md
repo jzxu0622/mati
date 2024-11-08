@@ -15,7 +15,7 @@ MATI is distributed as a MATLAB App. It contains the following files:
 # References
 If you use MATI, either in a whole or partially, please cite 
 1. this source code: https://github.com/jzxu0622/mati
-2. arXiv link to the MATI paper. 
+2. The MATI paper: https://arxiv.org/abs/2411.04401 
 
 
 
